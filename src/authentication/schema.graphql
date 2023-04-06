@@ -1,0 +1,27 @@
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type AccessToken {
+  access_token: String!
+}
+
+input SignUpInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+input ResetPasswordInput {
+  hash: String!
+  password: String!
+}
+
+type Mutation {
+  login(loginInput: LoginInput!): AccessToken
+  signUp(signUpInput: SignUpInput!): User
+  resetPasswordEmail(email: String!): User
+  resetPassword(resetPasswordInput: ResetPasswordInput!): User
+}

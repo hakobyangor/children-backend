@@ -1,0 +1,44 @@
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: UserRole
+  password: String
+  status: UserStatus
+  hash: String
+  hashExpiredAt: String
+  createdAt: String
+  updatedAt: String
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+  PENDING
+  DRAFT
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+input CreateUserInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: UserRole!
+  password: String
+  status: UserStatus
+}
+
+type Query {
+  users: [User!]!
+  userById(id: ID!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User
+}
