@@ -5,7 +5,7 @@ import { PrismaService } from 'src/prisma.service';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [PassportModule.register({ defaultStrategy: 'jwt' })],
+  imports: [PassportModule],
   providers: [UserResolvers, UserService, PrismaService],
 })
 export class UserModule {}
