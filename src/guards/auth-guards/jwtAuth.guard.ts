@@ -11,11 +11,10 @@ export class JWTAuthGuard extends AuthGuard('jwt') {
   getRequest(context: ExecutionContext) {
     const context_ = GqlExecutionContext.create(context);
     const request = context_.getContext();
-    console.log('🚀 ~ getRequest ~ request:', request);
-    console.log('🚀 ~ getRequest ~ request:', request.headers);
+
     // should be the same name as args
 
-    return request;
+    return request.req;
   }
 
   handleRequest(error, user, info, context) {
