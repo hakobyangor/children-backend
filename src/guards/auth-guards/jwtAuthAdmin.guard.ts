@@ -13,7 +13,7 @@ export class JWTAuthAdminGuard extends AuthGuard('jwt') {
     const context_ = GqlExecutionContext.create(context);
     const request = context_.getContext();
 
-    return request;
+    return request.req;
   }
 
   handleRequest(error, user, info, context) {
