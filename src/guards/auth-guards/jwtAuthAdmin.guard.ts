@@ -17,7 +17,7 @@ export class JWTAuthAdminGuard extends AuthGuard('jwt') {
   }
 
   handleRequest(error, user, info, context) {
-    if (!user || info || error || user.role != UserRole.ADMIN) {
+    if (!user || info || error || user.sub.role != UserRole.ADMIN) {
       const context_ = GqlExecutionContext.create(context);
       const reply = context_.getContext().reply;
 

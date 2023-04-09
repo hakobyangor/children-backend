@@ -1,0 +1,32 @@
+type DoctorSpecialization {
+  id: ID!
+  name: String!
+  status: Status
+  createdAt: String
+  updatedAt: String
+}
+
+input CreateDoctorSpecializationInput {
+  name: String!
+  status: Status!
+}
+
+input UpdateDoctorSpecializationInput {
+  name: String
+  status: Status
+}
+
+type Query {
+  doctorSpecializations: [DoctorSpecialization!]!
+  doctorSpecializationById(id: ID!): DoctorSpecialization
+}
+
+type Mutation {
+  createDoctorSpecialization(
+    createDoctorSpecializationInput: CreateDoctorSpecializationInput!
+  ): DoctorSpecialization
+  updateDoctorSpecialization(
+    id: ID!
+    updateDoctorSpecializationInput: UpdateDoctorSpecializationInput!
+  ): DoctorSpecialization
+}

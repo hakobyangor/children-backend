@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `Doctor` ADD COLUMN `status` ENUM('ACTIVE', 'INACTIVE', 'DELETED') NULL DEFAULT 'ACTIVE';
+
+-- AlterTable
+ALTER TABLE `DoctorSpecialization` ADD COLUMN `status` ENUM('ACTIVE', 'INACTIVE', 'DELETED') NULL DEFAULT 'ACTIVE';

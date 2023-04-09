@@ -1,0 +1,45 @@
+type Doctor {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  status: Status
+  avatar: String
+  address: String
+  lat: Float
+  long: Float
+  doctorSpecializationId: Int
+  doctorSpecialization: DoctorSpecialization
+  createdAt: String
+  updatedAt: String
+}
+
+input CreateDoctorInput {
+  firstName: String!
+  lastName: String!
+  address: String!
+  doctorSpecializationId: Int!
+  avatar: String
+  lat: Float!
+  long: Float!
+}
+
+input UpdateDoctorInput {
+  firstName: String
+  lastName: String
+  address: String
+  doctorSpecializationId: Int
+  avatar: String
+  lat: Float
+  long: Float
+  status: Status
+}
+
+type Query {
+  doctors: [Doctor!]!
+  doctorById(id: ID!): Doctor
+}
+
+type Mutation {
+  createDoctor(createDoctorInput: CreateDoctorInput!): Doctor
+  updateDoctor(id: ID!, updateDoctorInput: UpdateDoctorInput!): Doctor
+}

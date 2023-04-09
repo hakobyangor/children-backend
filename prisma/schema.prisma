@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Status {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
 model User {
   id            Int        @id @default(autoincrement())
   email         String     @unique
@@ -33,4 +39,40 @@ enum UserStatus {
   DELETED
   PENDING
   DRAFT
+}
+
+model Doctor {
+  id                     Int                  @id @default(autoincrement())
+  avatar                 String?
+  firstName              String
+  lastName               String
+  doctorSpecializationId Int
+  address                String
+  lat                    Float
+  long                   Float
+  status                 Status?              @default(ACTIVE)
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime?
+  doctorSpecialization   DoctorSpecialization @relation(fields: [doctorSpecializationId], references: [id])
+  doctorWorkingHours     DoctorWorkingHours[]
+}
+
+model DoctorSpecialization {
+  id        Int       @id @default(autoincrement())
+  name      String
+  status    Status?   @default(ACTIVE)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  doctor    Doctor[]
+}
+
+model DoctorWorkingHours {
+  id        Int       @id @default(autoincrement())
+  day       Int
+  open      String
+  close     String
+  doctorId  Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  doctor    Doctor    @relation(fields: [doctorId], references: [id])
 }
