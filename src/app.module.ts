@@ -19,6 +19,7 @@ import { join } from 'path';
       definitions: {
         path: join(process.cwd(), 'src/generated/graphql.ts'),
       },
+      playground: process.env.NODE_ENV === 'prod' ? false : true,
     }),
   ],
 })
