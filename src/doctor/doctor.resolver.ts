@@ -38,4 +38,10 @@ export class DoctorResolvers {
   ): Promise<Doctor> {
     return this.doctorService.updateDoctor(Number(id), updateDoctorData);
   }
+
+  @Mutation(() => Promise<Doctor>)
+  @UseGuards(JWTAuthAdminGuard)
+  async deleteDoctor(@Args('id') id: string): Promise<Doctor> {
+    return this.doctorService.deleteDoctor(Number(id));
+  }
 }

@@ -53,6 +53,7 @@ model Doctor {
   status                 Status?              @default(ACTIVE)
   createdAt              DateTime             @default(now())
   updatedAt              DateTime?
+  deletedAt              DateTime?
   doctorSpecialization   DoctorSpecialization @relation(fields: [doctorSpecializationId], references: [id])
   doctorWorkingHours     DoctorWorkingHours[]
 }
@@ -63,6 +64,7 @@ model DoctorSpecialization {
   status    Status?   @default(ACTIVE)
   createdAt DateTime  @default(now())
   updatedAt DateTime?
+  deletedAt DateTime?
   doctor    Doctor[]
 }
 

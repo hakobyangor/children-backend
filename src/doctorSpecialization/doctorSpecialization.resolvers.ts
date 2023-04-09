@@ -48,4 +48,14 @@ export class DoctorSpecializationResolvers {
       updateDoctorSpecializationData,
     );
   }
+
+  @Mutation(() => Promise<DoctorSpecialization>)
+  @UseGuards(JWTAuthAdminGuard)
+  async deleteDoctorSpecialization(
+    @Args('id') id: string,
+  ): Promise<DoctorSpecialization> {
+    return this.doctorSpecializationService.deleteDoctorSpecialization(
+      Number(id),
+    );
+  }
 }

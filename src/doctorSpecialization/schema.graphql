@@ -29,4 +29,5 @@ type Mutation {
     id: ID!
     updateDoctorSpecializationInput: UpdateDoctorSpecializationInput!
   ): DoctorSpecialization
+  deleteDoctorSpecialization(id: ID!): DoctorSpecialization
 }

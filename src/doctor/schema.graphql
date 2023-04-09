@@ -42,4 +42,5 @@ type Query {
 type Mutation {
   createDoctor(createDoctorInput: CreateDoctorInput!): Doctor
   updateDoctor(id: ID!, updateDoctorInput: UpdateDoctorInput!): Doctor
+  deleteDoctor(id: ID!): Doctor
 }

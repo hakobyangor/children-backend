@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { DoctorSpecialization } from '@prisma/client';
+import { DoctorSpecialization, Status } from '@prisma/client';
 
 import { PrismaService } from 'src/prisma.service';
 import { CreateDoctorSpecializationInput } from './dto/createDoctorSpecialization.input';
 import { UpdateDoctorSpecializationInput } from './dto/updateDoctorSpecialization.input';
+import * as moment from 'moment';
 
 @Injectable()
 export class DoctorSpecializationService {
@@ -31,13 +32,27 @@ export class DoctorSpecializationService {
     id: number,
     input: UpdateDoctorSpecializationInput,
   ): Promise<DoctorSpecialization> {
-    const doctor = await this.prisma.doctorSpecialization.update({
+    const doctorSpecialization = await this.prisma.doctorSpecialization.update({
       data: input,
       where: {
         id,
       },
     });
 
-    return doctor;
+    return doctorSpecialization;
+  }
+
+  async deleteDoctorSpecialization(id: number): Promise<DoctorSpecialization> {
+    const doctorSpecialization = await this.prisma.doctorSpecialization.update({
+      data: {
+        status: Status.DELETED,
+        deletedAt: moment().toDate(),
+      },
+      where: {
+        id,
+      },
+    });
+
+    return doctorSpecialization;
   }
 }

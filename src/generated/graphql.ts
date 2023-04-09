@@ -96,8 +96,10 @@ export interface IMutation {
     resetPassword(resetPasswordInput: ResetPasswordInput): Nullable<User> | Promise<Nullable<User>>;
     createDoctor(createDoctorInput: CreateDoctorInput): Nullable<Doctor> | Promise<Nullable<Doctor>>;
     updateDoctor(id: string, updateDoctorInput: UpdateDoctorInput): Nullable<Doctor> | Promise<Nullable<Doctor>>;
+    deleteDoctor(id: string): Nullable<Doctor> | Promise<Nullable<Doctor>>;
     createDoctorSpecialization(createDoctorSpecializationInput: CreateDoctorSpecializationInput): Nullable<DoctorSpecialization> | Promise<Nullable<DoctorSpecialization>>;
     updateDoctorSpecialization(id: string, updateDoctorSpecializationInput: UpdateDoctorSpecializationInput): Nullable<DoctorSpecialization> | Promise<Nullable<DoctorSpecialization>>;
+    deleteDoctorSpecialization(id: string): Nullable<DoctorSpecialization> | Promise<Nullable<DoctorSpecialization>>;
     createUser(createUserInput: CreateUserInput): Nullable<User> | Promise<Nullable<User>>;
 }
 
